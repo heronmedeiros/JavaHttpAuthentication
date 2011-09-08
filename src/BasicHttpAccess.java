@@ -18,6 +18,12 @@ public class BasicHttpAccess extends Authenticator {
 			return (new PasswordAuthentication(Constantes.kuser, Constantes.kpass.toCharArray()));
 		
 	}
+	
+	
+
+
+	
+	
 
 	public static void main(String[] args) {
 		Authenticator.setDefault(new BasicHttpAccess());
@@ -29,9 +35,59 @@ public class BasicHttpAccess extends Authenticator {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					ins));
 			String str;
-			while ((str = reader.readLine()) != null)
-				System.out.println(str);
-		} catch (Exception e) {
+			String jsonData = null ;
+			while ((str = reader.readLine()) != null) 
+			{
+				jsonData += str;
+			}
+			
+			System.out.println(jsonData);
+			
+			
+//			try {
+//
+//			    // cria um objeto a partir dos dados em JSON
+//			    JSONObject jObj = new JSONObject( jsonData );
+//
+//			    // legal, tem um objeto, e agora pega a propriedade bindings
+//			    // que é um array
+//			    JSONArray jArray = jObj.getJSONArray( "bindings" );
+//
+//			    // itera pelo array
+//			    for ( int i = 0; i < jArray.length(); i++ ) {
+//
+//			        // para cada posição do array, pega o objeto
+//			        JSONObject jo = jArray.getJSONObject( i );
+//
+//			        // é, mas cada objeto tem um atributo chamado ircEvent
+//			        // que é um array
+//			        JSONArray jArrayIrcEvent = jo.optJSONArray( "ircEvent" );
+//
+//			        // itera pelo array obtido na posição atual
+//			        for ( int j = 0; j < jArrayIrcEvent.length(); j++ ) {
+//
+//			            // pega o objeto de novo...
+//			            JSONObject joi = jArrayIrcEvent.getJSONObject( j );
+//
+//			            // para cada objeto obtido, verifica se o atributo
+//			            // existe. se existe, mostra os dado associado
+//			            if ( joi.has( "ircEvent" ) ) {
+//			                System.out.println( joi.getString( "ircEvent" ) );
+//			            } else if ( joi.has( "bindings" ) ) {
+//			                System.out.println( joi.getString( "bindings" ) );
+//			            }
+//
+//			        }
+//
+//			    }
+//
+//			} catch ( JSONException exc ) {
+//			    exc.printStackTrace();
+//			}
+//			
+//			
+		} 
+		catch (Exception e) {
 			e.printStackTrace();
 		}
 
